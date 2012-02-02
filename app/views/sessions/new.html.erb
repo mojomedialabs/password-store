@@ -1,0 +1,25 @@
+<%= form_tag sessions_path, :id => "login-form" do %>
+  <h2>Login</h2>
+  <fieldset>
+    <div id="login-form-email-address" class="login-form-field">
+      <%= text_field_tag :email_address, params[:email_address], :class => "small", :placeholder => "Email Address" %>
+    </div>
+    <div id="login-form-password" class="login-form-field">
+      <%= password_field_tag :password, nil, :class => "small", :placeholder => "Password" %>
+    </div>
+    <div id="login-form-forgot-your-password" class="login-form-field">
+      <%= link_to "Forgot your password?", new_password_reset_path %>
+    </div>
+    <div id="login-form-remember-me" class="login-form-field">
+      <%= check_box_tag :remember_me, 1, params[:remember_me], :title => "This will set a &quot;permanent&quot; cookie in your browser allowing this site to remember your login information across browser sessions. Only a hash unique to you is stored in the cookie. No other personally identifying information is stored. Do not select this option if you are on a shared or public computer." %>
+      <%= label_tag :remember_me %>
+    </div>
+    <div id="login-form-limit-session" class="login-form-field">
+       <%= check_box_tag :limit_session, 1, params[:limit_session], :title => "By default you can have multiple computers remember your login information. Select this option if you wish to limit remembered sessions to this computer (and to your current browser). You will have to manually log in if you use another computer or browser." %>
+      <%= label_tag :limit_session %>
+    </div>
+    <div id="login-form-submit" class="login-form-field">
+      <%= submit_tag "Login" %>
+    </div>
+  </fieldset>
+<% end %>

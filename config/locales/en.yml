@@ -1,0 +1,95 @@
+#English
+
+en:
+  flash:
+    access:
+      must_be_logged_in: "You must be logged in to view this page."
+      already_logged_in: "You are already logged in."
+      not_authorized: "You are not authorized to view this page."
+    error: "Error: "
+    password:
+      error:
+        could_not_find: "Error: Unable to find the specified password!"
+        could_not_create: "Error: Unable to create the password!"
+        could_not_save: "Error: Unable to save the password to database!"
+        could_not_update: "Error: Unable to save changes to the password!"
+        could_not_destroy: "Error: Unable to delete the specified password!"
+        do_not_own_view: "Error: You are not authorized to view that password!"
+        do_not_own_edit: "Error: You are not authorized to edit that password!"
+        do_not_own_update: "Error: You are not authorized to edit that password!"
+        do_not_own_destroy: "Error: You are not authorized to delete that password!"
+        could_not_find_multiple: "Error: Unable to find one or more of the specified passwords!"
+        could_not_update_multiple: "The following errors occurred when updating the passwords:<br />"
+      success:
+        created: "The password for %{password_name} has been created! %{undo_link}."
+        updated: "The password for %{password_name} has been updated! %{undo_link}."
+        destroyed: "The password for %{password_name} account has been deleted! %{undo_link}."
+    reboot: "Rebooting Rails. You may need to refresh this page in order to see the changes take effect."
+    session:
+      error:
+        could_not_create: "Error: Unable to create the session!"
+        login: "The user name and password you provided is not valid."
+        recovery_link: "Invalid recovery link."
+      success:
+        login: "Welcome back %{user_name}, thank you for logging in!"
+        logout: "You are now logged out."
+        change_password: "Please change your password."
+      password_resets:
+        sent_email: "Sent email with password reset instructions."
+        expired: "Password reset has expired."
+        reset: "Your password has been reset."
+    user:
+      error:
+        could_not_find: "Error: Unable to find the specified user!"
+        could_not_create: "Error: Unable to create the user!"
+        could_not_save: "Error: Unable to save the user to database!"
+        could_not_update: "Error: Unable to save changes to the user!"
+        could_not_destroy: "Error: Unable to delete the specified user!"
+        privilege_level_create: "Error: You cannot create a user with a higher privilege level than your own!"
+        privilege_level_edit: "Error: You are not authorized to to edit that user!"
+        privilege_level_update: "Error: You cannot modify a users privilege level to be higher than your own!"
+        privilege_level_destroy: "Error: You are not authorized to delete that user!"
+        could_not_find_multiple: "Error: Unable to find one or more of the specified users!"
+        could_not_update_multiple: "The following errors occurred when updating %{user_name} account:<br />"
+        privilege_level_edit_multiple: "Error: You are not authorized to to edit the following users:<br />"
+        privilege_level_destroy_multiple: "Error: You are not authorized to delete the following users:<br />"
+        cannot_destroy_self_via_multiple: "Error: You cannot delete your account this way!"
+      success:
+        created: "User %{user_name} has been created! %{undo_link}."
+        updated: "%{user_name} account has been updated! %{undo_link}."
+        destroyed: "%{user_name} account has been deleted! %{undo_link}."
+        updated_self: "Your account has been updated! %{undo_link}."
+    versions:
+      undo: "Undo"
+      redo: "Redo"
+      undid:
+        create: "Undid create."
+        update: "Undid update."
+        destroy: "Undid delete."
+  activerecord:
+    attributes:
+      picture:
+        md5: ""
+      user:
+        email_address: "E-mail Address"
+    errors:
+      messages:
+        blank:
+          "cannot be blank"
+      models:
+        user:
+          confirmation: "does not match the confirmation"
+          taken: "is already in use by another user"
+          attributes:
+            email_address:
+              invalid: "must be a valid e-mail address"
+            name:
+              invalid: "must be 4 to 16 letters, numbers, or underscores and have no spaces"
+            password:
+              invalid: "must be 6 to 255 characters"
+            phone_number:
+              invalid:  "must be a valid US phone number"
+  views:
+    pagination:
+      previous: "&lt; Previous"
+      next: "Next &gt;"
