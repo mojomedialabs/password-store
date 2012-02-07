@@ -1,0 +1,20 @@
+<div id="page-info" class="in">
+  <h2>Showing Password: <%= @password.id %></h2>
+</div>
+<div class="line"></div>
+<div id="page-actions" class="in">
+  <%= link_to "Edit Password", edit_admin_password_path(@password) %><%= link_to "Delete Password", admin_passwords_path(@password), :method => :delete %>
+</div>
+<div class="in">
+  <p><strong>User:</strong> <%= @password.user.%>
+  <p><strong>Name:</strong> <%= @password.name %></p>
+  <p><strong>URL:</strong> <%= @password.url %></p>
+  <p><strong>Created at:</strong> <%= @password.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+  <p><strong>Last Updated at:</strong> <%= @password.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+</div>
+<div id="toggle-debug" class="in">
+  <span class="toggle-debug-text">Show Debug Info</span><span class="toggle-debug-text" style="display: none;">Hide Debug Info</span>
+</div>
+<div id="debug-info" class="in">
+  <%= debug @password %>
+</div>

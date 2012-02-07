@@ -13,10 +13,10 @@
 
 /* SITE */
   Created On: 2012/01/20
-  Last Updated: 2012/01/20
+  Last Updated: 2012/02/02
   Language: English
   Doctype: HTML5
-  Lovingly Made In: Geany 0.20, TextMate 1.5.10 (1631)
+  Lovingly Made In: TextMate 1.5.10 (1631)
   Lovingly Made On: Ubuntu 11.04, OSX 10.6.8
   Lovingly Made With: Ruby, Ruby on Rails, ERB, HTML5, CSS3, SCSS, JavaScript, jQuery
 

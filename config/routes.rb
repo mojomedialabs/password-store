@@ -20,7 +20,11 @@ PasswordStore::Application.routes.draw do
 
     get 'reboot' => 'admin#reboot', :as => 'reboot'
 
-    resources :password
+    resources :passwords do
+      collection do
+        post :destroy_multiple
+      end
+    end
 
     resources :users do
       collection do

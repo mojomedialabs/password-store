@@ -20,7 +20,7 @@
 <body>
   <div id="container">
     <header id="main-header">
-      <h1>Mojo Media Labs Password Store</h1>
+      <h1><%= link_to image_tag(image_path("mojo-media-labs-logo.png")) + "<br />Password Store".html_safe, root_path %></h1>
       <nav id="main-nav">
         <ul>
           <% if @current_user %>

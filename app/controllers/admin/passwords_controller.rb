@@ -109,16 +109,38 @@ class Admin::PasswordsController < Admin::AdminController
     end
   end
 
-  def edit_multiple
-
-  end
-
-  def update_multiple
-
-  end
-
   def destroy_multiple
+    if params[:passwords_ids].nil?
+      flash[:type] = "error"
 
+      flash[:notice] = t "flash.password.error.could_not_find_multiple"
+
+      redirect_to admin_passwords_url and return
+    end
+
+    @passwords = Password.find_all_by_id(params[:passwords_ids])
+
+    unless @passwords.nil?
+      flash[:type] = "success"
+
+      @passwords.each do |password|
+        Password.destroy(password)
+
+        unless flash[:notice].blank?
+          flash[:notice] += "<br />"
+        end
+
+        flash[:notice] += t "flash.password.success.destroyed", :password_name => password.name, :undo_link => ""
+      end
+
+      redirect_to admin_passwords_url and return
+    else
+      flash[:type] = "error"
+
+      flash[:notice] = t "flash.password.error.could_not_find_multiple"
+
+      redirect_to admin_passwords_url and return
+    end
   end
 
   private

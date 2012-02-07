@@ -186,9 +186,14 @@ select:focus, textarea:focus {
 header#main-header {
   margin-bottom: 20px;
   overflow: hidden;
-  img#logo {
-    float: left;
-    width: 300px;
+  h1 {
+    img {
+      width: 300px;
+    }
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
   }
   nav#main-nav {
     float: right;
@@ -224,8 +229,10 @@ header#main-header {
   margin: 0 auto;
   width: 500px;
   input[type="text"], input[type="password"] {
-    ::-webkit-input-placeholder,
-    :-moz-placeholder {
+    &::-webkit-input-placeholder {
+      font-weight: bold;
+    }
+    &:-moz-placeholder {
     	font-weight: bold;
     }
   }

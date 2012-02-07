@@ -3,6 +3,8 @@ require "openssl"
 class Password < ActiveRecord::Base
   attr_accessor :cipher, :key, :plain_text
 
+  belongs_to :user
+
   after_initialize :initialize_cipher
   before_create :create_iv
 
@@ -55,6 +57,14 @@ class Password < ActiveRecord::Base
       self.plain_text = pt.clone
     else
       ""
+    end
+  end
+
+  def self.search(search)
+    if search
+      where("name LIKE :search OR url LIKE :search", { :search => "%#{search}%" })
+    else
+      scoped
     end
   end
 end

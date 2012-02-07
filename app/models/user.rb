@@ -4,6 +4,7 @@ require "RFC2822"
 class User < ActiveRecord::Base
   attr_accessor :password
 
+  has_many :passwords
   has_paper_trail
 
   after_initialize :initialize_defaults
@@ -28,18 +29,6 @@ class User < ActiveRecord::Base
     :presence => true
 
   validates :last_name,
-    :presence => true
-
-  validates :street_address,
-    :presence => true
-
-  validates :city,
-    :presence => true
-
-  validates :zipcode,
-    :presence => true
-
-  validates :state,
     :presence => true
 
   validates :phone_number,

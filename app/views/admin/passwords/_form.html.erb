@@ -1,0 +1,29 @@
+<div id="page-info" class="in">
+  <h2><%= legend %></h2>
+</div>
+<div class="line"></div>
+<div class="in">
+  <%= form_for [:admin, @password] do |f| %>
+    <fieldset>
+      <div>
+        <%= f.label :user_id, "User" %><br />
+        <%= f.collection_select :user_id, User.all, :id, :full_name, :include_blank => "Please Select", :class => "small" %>
+      </div>
+      <div>
+        <%= f.label :name, "Name:" %><br />
+        <%= f.text_field :name, :class => "small" %>
+      </div>
+      <div>
+        <%= f.label :url, "URL:" %><br />
+        <%= f.text_field :url, :class => "small" %>
+      </div>
+      <div>
+        <%= f.label :plain_text, "Password:" %><br />
+        <%= f.text_field :plain_text, :class => "small" %>
+      </div>
+      <div>
+        <%= submit_tag "Submit" %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
