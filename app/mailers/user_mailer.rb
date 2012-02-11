@@ -4,26 +4,12 @@ class UserMailer < ActionMailer::Base
   def welcome(user)
     @user = user
 
-    mail :to => user.email_address, :subject => "Welcome to the Assessment Tool!"
+    mail :to => user.email_address, :subject => "Welcome to the Mojo Media Labs Password Store!"
   end
 
   def password_reset(user)
     @user = user
 
-    mail :to => user.email_address, :subject => "Assessment Tool - Password Reset"
-  end
-
-  def assessment_results(assessment, user)
-    @assessment = assessment
-    @user = user
-
-    mail :to => user.email_address, :subject => "Your assessment results are here!"
-  end
-
-  def admin_assessment_results(assessment, user)
-    @assessment = assessment
-    @user = user
-
-    mail :to => User.admins.map(&:email_address), :subject => "Assessment results are in for #{@user.full_name}!"
+    mail :to => user.email_address, :subject => "Mojo Media Labs Password Store - Password Reset"
   end
 end

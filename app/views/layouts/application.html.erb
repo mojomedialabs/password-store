@@ -24,24 +24,24 @@
       <nav id="main-nav">
         <ul>
           <% if @current_user %>
-            <li><%= link_to "Logout", logout_path %></li>
+            <li><%= link_to "Your Passwords", root_path %></li>
             <% if @current_user.privilege_level >= User::PrivilegeLevelAdmin %>
               <li><%= link_to "Admin Panel", admin_root_path %></li>
             <% end %>
-            <li><%= link_to "Edit Profile", edit_user_path(@current_user) %></li>
-            <li><%= link_to "Your Passwords", passwords_path %></li>
+			<li><%= link_to "Edit Profile", edit_user_path(@current_user) %></li>
+           	<li><%= link_to "Logout", logout_path %></li>
           <% end %>
         </ul>
       </nav>
     </header>
     <% if flash[:notice] %>
       <div id="flash-notice" class="notification <%= flash[:type] %> click-to-close">
-        <div><%= raw flash[:notice] %></div>
+        <div><%= flash[:notice].html_safe %></div>
       </div>
     <% end %>
     <% if flash[:debug] %>
       <div id="flash-debug" class="notification information click-to-close">
-        <div><%= raw debug flash[:debug] %></div>
+        <div><%= debug(flash[:debug]).html_safe %></div>
       </div>
     <% end %>
     <div id="content">

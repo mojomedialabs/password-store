@@ -1,0 +1,24 @@
+<h2><%= legend %></h2>
+<%= form_for [@password] do |f| %>
+  <fieldset>
+    <div>
+      <%= f.label :name, "Name:" %><br />
+      <%= f.text_field :name, :class => "small" %>
+    </div>
+    <div>
+      <%= f.label :url, "URL:" %><br />
+      <%= f.text_field :url, :class => "small" %>
+    </div>
+    <div>
+      <%= f.label :plain_text, "Password:" %><br />
+      <%= f.password_field :plain_text, :class => "small" %>
+    </div>
+    <div>
+      <%= f.label :plain_text_confirmation, "Repeat Password:" %><br />
+      <%= f.password_field :plain_text_confirmation, :class => "small" %>
+    </div>
+    <div>
+      <%= submit_tag "Submit" %>
+    </div>
+  </fieldset>
+<% end %>

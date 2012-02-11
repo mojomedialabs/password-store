@@ -12,7 +12,6 @@ class CreateUsers < ActiveRecord::Migration
       t.text :ip_addresses
       t.integer :privilege_level, :null => false, :default => 1
       t.integer :login_count, :null => false, :default => 0
-      t.integer :post_count, :null => false, :default => 0
       t.datetime :password_reset_sent_at
       t.datetime :last_login
       t.timestamps

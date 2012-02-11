@@ -5,18 +5,20 @@
 
 @charset "utf-8";
 
+$mojo-red: #c60751;
+
 /* Begin General Link Styles */
 
 a:link, a:visited {
-  color: #daa032;
+  color: $mojo-red;
 }
 
 a:hover, a:focus {
-  color: #d99c31;
+  color: #000000;
 }
 
 a:active {
-  color: #0063ce;
+  color: #ffffff;
 }
 
 #container {
@@ -108,7 +110,7 @@ select {
 input {
   &[type="button"], &[type="reset"], &[type="submit"] {
     border: 0;
-    background: #f7941d;
+    background: #000000;
     color: #ffffff;
     font-size: 14px;
     margin: 0;
@@ -166,17 +168,17 @@ select, textarea {
 input {
   &[type="file"]:focus, &[type="password"]:focus, &[type="text"]:focus {
     border: 1px solid #bab9b9;
-    box-shadow: 0 0 5px rgba(218, 160, 50, 1);
-    -webkit-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
-    -moz-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+    box-shadow: 0 0 5px rgba(198, 7, 81, 1);
+    -webkit-box-shadow: 0 0 5px rgba(198, 7, 81, 1);
+    -moz-box-shadow: 0 0 5px rgba(198, 7, 81, 1);
   }
 }
 
 select:focus, textarea:focus {
   border: 1px solid #bab9b9;
-  box-shadow: 0 0 5px rgba(218, 160, 50, 1);
-  -webkit-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
-  -moz-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+  box-shadow: 0 0 5px rgba(198, 7, 81, 1);
+  -webkit-box-shadow: 0 0 5px rgba(198, 7, 81, 1);
+  -moz-box-shadow: 0 0 5px rgba(198, 7, 81, 1);
 }
 
 /* End Forms */
@@ -187,6 +189,9 @@ header#main-header {
   margin-bottom: 20px;
   overflow: hidden;
   h1 {
+    float: left;
+
+    width: 300px;
     img {
       width: 300px;
     }
@@ -201,8 +206,8 @@ header#main-header {
     ul {
       list-style: none;
       li {
-        background: #daa032;
-        float: right;
+        background: #000000;
+        float: left;
         margin: 5px;
         a {
           color: #ffffff;
@@ -211,10 +216,11 @@ header#main-header {
           text-decoration: none;
         }
         a:hover, a:focus {
-          color: #8e6210;
+          background: $mojo-red;
         }
         a:active {
-          color: #0063ce;
+          background: #ffffff;
+          color: $mojo-red;
         }
       }
     }
@@ -239,6 +245,12 @@ header#main-header {
 }
 
 /* End Login Page */
+
+.copy-to-clipboard {
+  height: 50px;
+  width: 50px;
+}
+
 
 /* Begin Main Footer */
 

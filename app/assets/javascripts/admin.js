@@ -4,7 +4,7 @@
 
 var lastTextArea;
 
-$(function(){
+$(function() {
   // Close flash[:alert] messages when clicked
   $(".click-to-close").click(function() {
 		$(this).fadeTo(400, 0, function () {

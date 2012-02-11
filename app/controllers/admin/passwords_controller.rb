@@ -24,7 +24,7 @@ class Admin::PasswordsController < Admin::AdminController
   end
 
   def create
-    @password = Post.new(params[:password])
+    @password = Password.new(params[:password])
 
     unless @password.nil?
       @password.user = @current_user

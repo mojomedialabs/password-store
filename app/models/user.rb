@@ -4,7 +4,7 @@ require "RFC2822"
 class User < ActiveRecord::Base
   attr_accessor :password
 
-  has_many :passwords
+  has_many :passwords, :dependent => :destroy
   has_paper_trail
 
   after_initialize :initialize_defaults
@@ -42,12 +42,7 @@ class User < ActiveRecord::Base
     :presence => true,
     :numericality => true
 
-  validates :post_count,
-    :presence => true,
-    :numericality => true
-
   scope :admins, lambda { where("users.privilege_level >= ?", User::PrivilegeLevelAdmin) }
-  scope :moderators, lambda { where("users.privilege_level == ?", User::PrivilegeLevelModerator) }
   scope :regular_users, lambda { where("users.privilege_level <= ?", User::PrivilegeLevelUser) }
 
   PrivilegeLevelGuest     = 0
@@ -59,7 +54,6 @@ class User < ActiveRecord::Base
   def initialize_defaults
     self.privilege_level ||= 1
     self.login_count ||= 0
-    self.post_count ||= 0
   end
 
   def generate_token(column)
@@ -118,50 +112,12 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
-  def send_assessment_results(assessment)
-    UserMailer.assessment_results(assessment, self).deliver
-  end
-
-  def self.send_admin_assessment_results(assessment, user)
-    UserMailer.admin_assessment_results(assessnebt, user).deliver
-  end
-
-  def update_response(answer)
-      previous_responses = Response.find_all_by_user_id(self.id).select do |response|
-        response.answer.question == answer.question
-      end
-
-      complete_before = answer.question.section.assessment.complete?(self)
-
-      if previous_responses.length > 0
-        previous_responses.each do |response|
-          Response.destroy(response)
-        end
-      end
-
-      response = Response.new
-
-      response.user = self
-
-      response.answer = answer
-
-      response.save
-
-      complete_after = answer.question.section.assessment.complete?(self)
-
-      if !complete_before and complete_after
-        self.send_assessment_results(answer.question.section.assessment)
-      end
-
-      return true
-  end
-
   def full_name
     self.first_name + " " + self.last_name
   end
 
   def self.authenticate(email_address, password, limit_session = false)
-    user = find_by_email_address(email_address)
+    user = find_by_email_address(email_address.downcase)
 
     if user && user.password_hash == Digest::SHA256.hexdigest(password + user.password_salt)
       if limit_session

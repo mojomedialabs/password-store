@@ -1,0 +1,15 @@
+<%= javascript_include_tag "ZeroClipboard" %>
+<%= javascript_include_tag "clipboard" %>
+<h2>Your Passwords</h2>
+<div id="new-password">
+  <%= link_to "New Password", new_password_path %>
+</div>
+<div id="passwords">
+  <%= debug @passwords %>
+</div>
+
+<% 5.times do |x| %>
+  <div class="copy-to-clipboard">
+    Testing <%= x %>
+  </div>
+<% end %>

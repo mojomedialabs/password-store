@@ -1,6 +1,7 @@
 require "highline"
 require "highline/import"
 require "RFC2822"
+require "active_record/fixtures"
 
 def prompt_for_admin_field(prompt, echo, validate, validate_response, default)
   field = ask(prompt) do |q|
@@ -21,9 +22,9 @@ def create_admin_user
   email = prompt_for_admin_field("E-mail Address: ", true, RFC2822::EmailAddress, "Invalid e-mail address. Must be a valid e-mail address.", "admin@teamrgc.com")
   password = prompt_for_admin_field("Password: ", false, /^([\x20-\x7E]){6,255}$/, "Invalid password. Must be between 6 and 255 characters.", "assessments")
 
-  first_name = "Admin" #prompt_for_admin_field("First Name: ", true, "", "", "Admin")
-  last_name = "User" #prompt_for_admin_field("Last Name: ", true, "", "", "User")
-  phone_number = "972-815-1070" #prompt_for_admin_field("Phone Number: ", true, /^(?:\+?1[-. ]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/, "Invalid phone number.", "972-815-1070")
+  first_name = "Admin"
+  last_name = "User"
+  phone_number = "972-815-1070"
 
   attributes = {
     :email_address => email,
@@ -35,10 +36,7 @@ def create_admin_user
     :phone_number => phone_number,
     :privilege_level => 4,
     :login_count => 0,
-    :post_count => 0
   }
-
-  load "user.rb"
 
   if User.find_by_email_address(email)
     puts "\nWARNING: There is already a user with the e-mail address: #{email}, so no account changes were made.\nIf you wish to create an additional admin user, please run rake db:seed again and enter a different e-mail address.\n\n"
@@ -48,4 +46,12 @@ def create_admin_user
   end
 end
 
+load "user.rb"
+
 create_admin_user unless User.find_by_privilege_level(4)
+
+seed_users = YAML::load_file(File.join(Rails.root, "db", "fixtures", "users.yml"))
+seed_users["users"].each do |user|
+  new_user = User.create(user)
+  new_user.save
+end

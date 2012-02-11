@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120120185412) do
 
   create_table "passwords", :force => true do |t|
+    t.integer  "user_id",     :null => false
     t.text     "name"
     t.text     "url"
     t.text     "iv"
@@ -34,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20120120185412) do
     t.text     "ip_addresses"
     t.integer  "privilege_level",        :default => 1, :null => false
     t.integer  "login_count",            :default => 0, :null => false
-    t.integer  "post_count",             :default => 0, :null => false
     t.datetime "password_reset_sent_at"
     t.datetime "last_login"
     t.datetime "created_at"

@@ -27,24 +27,6 @@
   <p><strong>Last Updated at:</strong> <%= @user.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
   <p><strong>Last Login:</strong> <% if @user.last_login %><%= @user.last_login.strftime("%Y-%m-%d %H:%M:%S") %><% else %>Never<% end %></p>
 </div>
-<div id="assessments" class="in">
-  <h3>Assessments Started</h3>
-  <ul>
-    <% Assessment.all.each do |assessment| %>
-      <% if assessment.started?(@user) and !assessment.complete?(@user) %>
-        <li><%= link_to assessment.title, admin_assessment_path(assessment) %></li>
-      <% end %>
-    <% end %>
-  </ul>
-  <h3>Assessments Completed</h3>
-  <ul>
-    <% Assessment.all.each do |assessment| %>
-      <% if assessment.complete?(@user) %>
-        <li><%= link_to assessment.title, admin_assessment_path(assessment) %></li>
-      <% end %>
-    <% end %>
-  </ul>
-</div>
 <div id="toggle-debug" class="in">
   <span class="toggle-debug-text">Show Debug Info</span><span class="toggle-debug-text" style="display: none;">Hide Debug Info</span>
 </div>

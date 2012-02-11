@@ -1,16 +1,22 @@
 require "openssl"
 
 class Password < ActiveRecord::Base
-  attr_accessor :cipher, :key, :plain_text
+  attr_accessor :key, :plain_text
 
   belongs_to :user
+  #has_paper_trail
 
-  after_initialize :initialize_cipher
+  after_initialize :initialize_key
   before_create :create_iv
+  #before_save :encrypt
 
-  def initialize_cipher
-    #self.cipher = OpenSSL::Cipher::Cipher.new("aes-256-cbc")
+  validates :name,
+    :presence => true
 
+  validates :plain_text,
+    :confirmation => true
+
+  def initialize_key
     self.key = File.read(Rails.root.join("config/key"))
   end
 
@@ -21,7 +27,8 @@ class Password < ActiveRecord::Base
   end
 
   def encrypt
-    unless self.key.blank?
+    #unless self.key.blank? or self.iv.blank? or self.plain_text.blank?
+    if !self.key.blank? and !self.iv.blank? and !self.plain_text.blank?
       cipher = OpenSSL::Cipher::Cipher.new("aes-256-cbc")
 
       cipher.encrypt
@@ -41,7 +48,7 @@ class Password < ActiveRecord::Base
   end
 
   def decrypt
-    if !self.key.blank? and !self.iv.blank? and !self.cipher_text.blank?
+    unless self.key.blank? or self.iv.blank? or self.cipher_text.blank?
       cipher = OpenSSL::Cipher::Cipher.new("aes-256-cbc")
 
       cipher.decrypt

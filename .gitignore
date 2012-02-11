@@ -14,3 +14,4 @@ app/assets/images/notifications/
 setup_mail.rb
 vendor/bundle
 /config/key
+db/fixtures/users.yml
