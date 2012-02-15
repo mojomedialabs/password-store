@@ -3,7 +3,7 @@ require "openssl"
 class Password < ActiveRecord::Base
   attr_accessor :key, :plain_text
 
-  belongs_to :user
+  #belongs_to :user
   #has_paper_trail
 
   after_initialize :initialize_key
@@ -27,8 +27,17 @@ class Password < ActiveRecord::Base
   end
 
   def encrypt
+    if self.key.blank?
+      self.initalize_key
+    end
+
+    if self.iv.blank?
+      self.create_iv
+    end
+
     #unless self.key.blank? or self.iv.blank? or self.plain_text.blank?
-    if !self.key.blank? and !self.iv.blank? and !self.plain_text.blank?
+    #if !self.key.blank? and !self.iv.blank? and !self.plain_text.blank?
+    if plain_text.present?
       cipher = OpenSSL::Cipher::Cipher.new("aes-256-cbc")
 
       cipher.encrypt

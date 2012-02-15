@@ -25,7 +25,9 @@ class PasswordsController < ApplicationController
   def create
     @password = Password.new(params[:password])
 
-    #@password.encrypt
+    @password.user_id = @current_user.id
+
+    @password.encrypt
 
     flash[:debug] = @password
 

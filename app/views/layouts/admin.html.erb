@@ -38,7 +38,7 @@
       <% end %>
       <% if flash[:debug] %>
         <div id="flash-debug" class="notification information click-to-close">
-          <div><%= debug flash[:debug].html_safe %></div>
+          <div><%= debug(flash[:debug]).html_safe %></div>
         </div>
       <% end %>
       <%= yield %>
