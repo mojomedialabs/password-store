@@ -4,7 +4,7 @@ require "RFC2822"
 class User < ActiveRecord::Base
   attr_accessor :password
 
-  #has_many :passwords, :dependent => :destroy
+  has_many :passwords, :dependent => :destroy
   has_paper_trail
 
   after_initialize :initialize_defaults

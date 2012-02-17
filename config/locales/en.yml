@@ -68,8 +68,9 @@ en:
         destroy: "Undid delete."
   activerecord:
     attributes:
-      picture:
-        md5: ""
+      password:
+        url: "URL"
+        plain_text: "Password"
       user:
         email_address: "E-mail Address"
     errors:
@@ -77,6 +78,8 @@ en:
         blank:
           "cannot be blank"
       models:
+        password:
+          confirmation: "does not match the confirmation"
         user:
           confirmation: "does not match the confirmation"
           taken: "is already in use by another user"

@@ -1,9 +1,10 @@
 class PasswordsController < ApplicationController
   before_filter :ensure_login
 
+  helper_method :sort_column, :sort_order
+
   def index
-    #@passwords = @current_user.passwords.search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
-    @passwords = Password.all
+    @passwords = @current_user.passwords.search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
   end
 
   def show
@@ -24,15 +25,6 @@ class PasswordsController < ApplicationController
 
   def create
     @password = Password.new(params[:password])
-
-    @password.user_id = @current_user.id
-
-    @password.encrypt
-
-    flash[:debug] = @password
-
-    redirect_to root_url and return
-
 
     unless @password.nil?
       @password.user = @current_user
@@ -118,7 +110,7 @@ class PasswordsController < ApplicationController
   end
 
   def sort_column
-    Password.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    Password.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
 
   def sort_order

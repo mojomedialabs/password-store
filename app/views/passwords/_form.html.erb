@@ -3,19 +3,19 @@
   <fieldset>
     <div>
       <%= f.label :name, "Name:" %><br />
-      <%= f.text_field :name, :class => "small" %>
+      <%= f.text_field :name, :autocomplete => "off", :class => "small" %>
     </div>
     <div>
       <%= f.label :url, "URL:" %><br />
-      <%= f.text_field :url, :class => "small" %>
+      <%= f.text_field :url, :autocomplete => "off", :class => "small" %>
     </div>
     <div>
       <%= f.label :plain_text, "Password:" %><br />
-      <%= f.password_field :plain_text, :class => "small" %>
+      <%= f.password_field :plain_text, :autocomplete => "off", :class => "small" %>
     </div>
     <div>
       <%= f.label :plain_text_confirmation, "Repeat Password:" %><br />
-      <%= f.password_field :plain_text_confirmation, :class => "small" %>
+      <%= f.password_field :plain_text_confirmation, :autocomplete => "off", :class => "small" %>
     </div>
     <div>
       <%= submit_tag "Submit" %>

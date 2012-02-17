@@ -4,9 +4,36 @@
 <div id="new-password">
   <%= link_to "New Password", new_password_path %>
 </div>
-<div id="passwords">
-  <%= debug @passwords %>
-</div>
+<table id="passwords">
+  <thead>
+    <tr>
+      <th scope="col"><%= sortable "name" %></th>
+      <th scope="col"><%= sortable "url" %></th>
+      <th scope="col"><%= sortable "plain_text" %></th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @passwords.each do |password| %>
+      <tr id="password-<%= password.id %>" class="password">
+        <td class="password-name"><%= link_to password.name, password %></td>
+        <td class="password-url"><%= link_to password.url, password.url %></td>
+        <td class="password-plain-text"><%= password.decrypt %></td>
+        <td class="password-actions">
+            <%= link_to "Show", "#", :class => "show-password" %>
+            <%= link_to image_tag(image_path("icons/16x16/edit.png"), :title => "Edit", :alt => "Edit"), edit_password_path(password), :class => "edit-password" %>
+            <%= link_to image_tag(image_path("icons/16x16/remove.png"), :title => "Delete", :alt => "Delete"), password_path(password), :method => :delete, :class => "delete-password" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
 
 <% 5.times do |x| %>
   <div class="copy-to-clipboard">

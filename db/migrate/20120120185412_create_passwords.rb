@@ -5,7 +5,7 @@ class CreatePasswords < ActiveRecord::Migration
       t.text :name
       t.text :url
       t.text :iv
-      t.binary :cipher_text
+      t.text :cipher_text
       t.timestamps
     end
   end

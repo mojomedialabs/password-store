@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20120120185412) do
     t.text     "name"
     t.text     "url"
     t.text     "iv"
-    t.binary   "cipher_text"
+    t.text     "cipher_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

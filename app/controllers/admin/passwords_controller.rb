@@ -154,6 +154,7 @@ class Admin::PasswordsController < Admin::AdminController
   end
 
   def undo_link
-    view_context.link_to(t("flash.versions.undo"), revert_version_path(@password.versions.scoped.last), :method => :post)
+    #view_context.link_to(t("flash.versions.undo"), revert_version_path(@password.versions.scoped.last), :method => :post)
+    ""
   end
 end

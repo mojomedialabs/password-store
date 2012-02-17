@@ -1,14 +1,15 @@
+require "base64"
 require "openssl"
 
 class Password < ActiveRecord::Base
   attr_accessor :key, :plain_text
 
-  #belongs_to :user
+  belongs_to :user
   #has_paper_trail
 
   after_initialize :initialize_key
   before_create :create_iv
-  #before_save :encrypt
+  before_save :encrypt
 
   validates :name,
     :presence => true
@@ -23,7 +24,9 @@ class Password < ActiveRecord::Base
   def create_iv
     cipher = OpenSSL::Cipher::Cipher.new("aes-256-cbc")
 
-    self.iv = cipher.random_iv
+    iv = cipher.random_iv
+
+    self.iv ||= Base64.encode64(iv.clone)
   end
 
   def encrypt
@@ -50,7 +53,7 @@ class Password < ActiveRecord::Base
 
       ct << cipher.final
 
-      self.cipher_text = ct.clone
+      self.cipher_text = Base64.encode64(ct.clone)
     else
       ""
     end
@@ -66,7 +69,9 @@ class Password < ActiveRecord::Base
 
       cipher.iv = self.iv
 
-      pt = cipher.update(self.cipher_text)
+      ct = Base64.decode64(self.cipher_text)
+
+      pt = cipher.update(ct)
 
       pt << cipher.final
 
