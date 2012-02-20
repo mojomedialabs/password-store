@@ -7,10 +7,11 @@
 <table id="passwords">
   <thead>
     <tr>
-      <th scope="col"><%= sortable "name" %></th>
-      <th scope="col"><%= sortable "url" %></th>
-      <th scope="col"><%= sortable "plain_text" %></th>
-      <th scope="col">Actions</th>
+      <th class="password-name" scope="col"><%= sortable "name" %></th>
+      <th class="password-url" scope="col"><%= sortable "url", "URL" %></th>
+      <th class="password-login-name" scope="col"><%= sortable "login_name" %></th>
+      <th class="password-plain-text" scope="col"><%= sortable "plain_text", "Password" %></th>
+      <th class="password-actions" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,7 @@
       <tr id="password-<%= password.id %>" class="password">
         <td class="password-name"><%= link_to password.name, password %></td>
         <td class="password-url"><%= link_to password.url, password.url %></td>
+        <td class="password-plain-text" scope="col"><%= password.login_name %></td>
         <td class="password-plain-text"><%= password.decrypt %></td>
         <td class="password-actions">
             <%= link_to "Show", "#", :class => "show-password" %>

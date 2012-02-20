@@ -229,6 +229,18 @@ header#main-header {
 
 /* End Main Header */
 
+/* Begin Main Footer */
+
+#main-footer {
+  margin-top: 65px;
+  #mojo {
+    color: #aaaaaa;
+    font-size: 8px;
+  }
+}
+
+/* End Main Footer */
+
 /* Begin Login Page */
 
 #login-form {
@@ -246,20 +258,16 @@ header#main-header {
 
 /* End Login Page */
 
+/* Begin Password Index Page */
+
+#passwords {
+  width: 100%;
+}
+
+/* End Password Index Page */
+
+
 .copy-to-clipboard {
   height: 50px;
   width: 50px;
 }
-
-
-/* Begin Main Footer */
-
-#main-footer {
-  margin-top: 65px;
-  #mojo {
-    color: #aaaaaa;
-    font-size: 8px;
-  }
-}
-
-/* End Main Footer */

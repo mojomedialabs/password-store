@@ -15,10 +15,12 @@ ActiveRecord::Schema.define(:version => 20120120185412) do
 
   create_table "passwords", :force => true do |t|
     t.integer  "user_id",     :null => false
-    t.text     "name"
+    t.text     "name",        :null => false
+    t.text     "login_name"
     t.text     "url"
-    t.text     "iv"
-    t.text     "cipher_text"
+    t.text     "description"
+    t.text     "iv",          :null => false
+    t.text     "cipher_text", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

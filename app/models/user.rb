@@ -22,8 +22,7 @@ class User < ActiveRecord::Base
     :presence => true,
     :length => { :minimum => 6, :maximum => 255 },
     :format => { :with => /^([\x20-\x7E]){6,255}$/ },
-    :confirmation => true,
-    :on => :create
+    :confirmation => true
 
   validates :first_name,
     :presence => true

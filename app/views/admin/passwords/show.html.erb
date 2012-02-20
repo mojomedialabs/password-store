@@ -9,6 +9,9 @@
   <p><strong>User:</strong> <%= @password.user.%>
   <p><strong>Name:</strong> <%= @password.name %></p>
   <p><strong>URL:</strong> <%= @password.url %></p>
+  <p><strong>Login Name:</strong> <%= @password.login_name %></p>
+  <p><strong>Password:</strong> <span class="hidden-password"><%= @password.decrypt %></span> <span class="show-hide-password">Show</span></p>
+  <p><strong>Description:</strong> <%= @password.description %></p>
   <p><strong>Created at:</strong> <%= @password.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
   <p><strong>Last Updated at:</strong> <%= @password.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
 </div>

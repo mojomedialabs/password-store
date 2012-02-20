@@ -383,36 +383,20 @@ footer {
 
 /* End Home Page Quick Links */
 
-/* Begin Assessments */
+/* Begin Search Input */
 
-/* Begin New Assessment */
-
-.section {
-  border-top: 1px solid #bab9b9;
-  h3 {
-    font-size: 22px;
-  }
-  .question:nth-child(odd) {
-    background: #f7f7f7;
-  }
-  .question {
-    margin-left: 10px;
-    .answer {
-      margin-left: 10px;
-    }
-  }
+#search {
+  outline: none;
+  transition: none;
+  -moz-transition: none;
+  -webkit-transition: none;
 }
 
-.display-order {
-  cursor: pointer;
-  float: right;
+#search:focus {
+  border: 1px solid #bab9b9;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
 }
 
-.remove {
-  cursor: pointer;
-  float: right;
-}
-
-/* End New Assessment */
-
-/* End Assessments */
+/* End Search Input */
